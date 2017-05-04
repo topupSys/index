@@ -1,0 +1,81 @@
+package project1;
+import java.util.Scanner;
+public class TestUsers {
+	public static void main (String[]args){
+		
+		Scanner input = new Scanner (System.in);
+		int choice = 1;
+		System.out.println("1. Customer\n2.Agent");
+		System.out.println("Enter choice: ");
+		choice = input.nextInt();
+		
+		if(choice == 1){
+			Users c1 = new Customer();
+			System.out.println("Enter your mobile contact number: ");
+			c1.getPhoneNo();
+			int option = 1;
+			
+			System.out.println("1. Check balance");
+			System.out.println("2. Reload");
+			System.out.println("Enter your option: ");
+			option = input.nextInt();
+			
+			if(option == 1){
+				System.out.println(toString());
+			}
+			
+			else if (option == 2){
+				System.out.println("Enter your telco");
+				c1.getTelco();
+				System.out.println("Enter amount of top-up: ");
+				c1.getAmount();
+				System.out.println("Enter mobile no.: ");
+				c1.getPhoneNo();
+				c1.getPayment();
+				System.out.println("You have successfully reloaded for "+c1.getPhoneNo()+ "RM "+c1.getAmount());
+				System.out.println("Your credit balance is " +c1.getBalance()+ "\nmobile data: " +((Customer) c1).getMobile_data());
+			}
+			else
+				System.out.println("You have entered invalid number");
+		}
+		
+		else if (choice == 2){
+			Users a1 = new Agent();
+			System.out.println("Enter username: ");
+			a1.getName();
+			System.out.println("Enter your password: ");
+			a1.getPassword();
+			a1.Login();
+			
+			System.out.println("1. Reload for customer");
+			System.out.println("2. Check balance");
+			System.out.println("3. Sales report");
+			int option = 1;
+			System.out.println("Enter your option: ");
+			option = input.nextInt();
+			if (option == 1){
+				System.out.println("Enter customer's telco");
+				a1.getTelco();
+				System.out.println("Enter amount of top-up: ");
+				a1.getAmount();
+				System.out.println("Enter customer's mobile no.: ");
+				a1.getPhoneNo();
+				a1.getPayment();
+				System.out.println("You have successfully reloaded for " +a1.getPhoneNo()+ "RM "+a1.getAmount());
+			}
+			else if(option == 2){
+				System.out.println("Unique id: "+((Agent) a1).getUnique_id()+ "Your account balance is "+a1.getBalance());
+			}
+			
+			else if (option == 3){
+				System.out.println("Date: "+a1.getDateCreated()+ "\nTotal sales: "+a1.getAmount());
+			}
+			
+			else
+				System.out.println("You have entered invalid number");
+		}
+		
+		else 
+			System.out.println("You have entered wrong choice!");
+	}
+}
