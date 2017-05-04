@@ -1,0 +1,66 @@
+package project1;
+import java.util.Scanner;
+public class Customer extends Users{
+	   private double mobile_data; //mobile top-up
+	   private String exp_date;// expiration date of top-up
+	   
+	public Customer(){
+		   
+	   }
+	   
+	public Customer(double mobile_data, String exp_date){
+		   this.mobile_data = mobile_data;
+		   this.exp_date = exp_date;
+	   }
+	public Customer(int phone_no,double balance, String telco, double amount, double mobile_data, String exp_date ){
+		this.mobile_data = mobile_data;
+		this.exp_date = exp_date;
+		setPhoneNo(phone_no);
+		setBalance(balance);
+		setTelco(telco);
+		setAmount(amount);
+	}
+
+	public double getMobile_data() {
+		return mobile_data;
+	}
+
+	public void setMobile_data(double mobile_data) {
+		this.mobile_data = mobile_data;
+	}
+	
+	public double Reload(){
+		Scanner input = new Scanner(System.in);
+		amount = input.nextDouble();
+		return amount;
+	}
+
+	public String getExp_date() {
+		if(amount == 5){
+			int days = 5;
+			exp_date = getDateCreated(); 
+		}
+		else if (amount == 10){
+			int days = 5;
+			exp_date = getDateCreated(); 
+		}
+		
+		else if (amount == 50){
+			
+		}
+		
+		else if (amount == 100){
+			
+		}
+		
+		return exp_date;
+	}
+
+	public void setExp_date(String exp_date) {
+		this.exp_date = exp_date;
+	}
+	
+	public String toString(){
+		return super.toString()+ "Expired date: " +getExp_date();
+	}
+	}
